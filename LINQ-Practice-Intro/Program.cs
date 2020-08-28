@@ -8,20 +8,22 @@ namespace LINQ_Practice_Intro
     {
         static void Main(string[] args)
         {
-            List<int> intList = SeedIntList();
-            List<string> stringList = SeedStringList();
-            List<List<int>> nestedList = SeedNestedList();
-            List<Person> personList = SeedPersonList();
+            List<int> intList = SeedIntList(); //Integer List
+            List<string> stringList = SeedStringList(); // String List
+            List<List<int>> nestedList = SeedNestedList(); // Nested String List
+            List<Person> personList = SeedPersonList(); // Person Object List
 
 
             // Operating on intList:
-            Console.WriteLine($"The sum of the numbers that are greater than or equal to 25: {intList}.");
-            Console.WriteLine($"The lowest number that is divisible by both 2 and 3: {intList}.");
-            Console.WriteLine($"The average of the numbers that are single digits: {intList}.");
-            Console.WriteLine($"The number of distinct numbers starting with 2: {intList}.");
+
+            
+            Console.WriteLine($"The sum of the numbers that are greater than or equal to 25: {intList.Where(x => x <= 25).Sum()}."); // Output: 120
+            Console.WriteLine($"The lowest number that is divisible by both 2 and 3: {intList.Where(x => x % 3 == 0 && x % 2 == 0).Min()}."); // Output: 12
+            Console.WriteLine($"The average of the numbers that are single digits: {intList.Where(x => x<10).Average()}."); //Output: 3.5714285714285716
+            Console.WriteLine($"The number of distinct numbers starting with 2: {intList.Distinct()}."); // ToDO spend 30 mins
 
             // Operating on stringList:
-            Console.WriteLine($"The number of distinct strings (trimmed and case insensitive): {stringList}.");
+            Console.WriteLine($"The number of distinct strings (trimmed and case insensitive): {stringList.ConvertAll(x => x.ToLower().Trim()).Distinct().Count()}."); //Output: 4
             Console.WriteLine($"The longest string (trimmed): {stringList}.");
             Console.WriteLine($"The second string when ordered in reverse alphabetical order: {stringList}.");
 
@@ -130,7 +132,7 @@ namespace LINQ_Practice_Intro
                 new List<int>() { 37, 12, 8, 12, 41, 63, 17, 2, 6, 3 },
                 new List<int>() { 90, 100, 12, 7, 17 },
                 new List<int>() { 4 * 2, 13 / 3, 90 / 12, 60 % 17, 3 * 3 * 2 }
-            }
+            };
         }
 
         static List<string> SeedStringList()

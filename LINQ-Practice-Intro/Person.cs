@@ -14,7 +14,7 @@ namespace LINQ_Practice_Intro
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } // DateTime is reserved keyword and part of the c# program
         public GenderValue Gender { get; set; } 
 
     }
