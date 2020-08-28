@@ -29,14 +29,14 @@ namespace LINQ_Practice_Intro
 
             // Operating on nestedList: 
             Console.WriteLine($"The overall largest number across all lists: {nestedList.Select(x => x.Max()).Max()}.");// Output: 100
-            Console.WriteLine($"The number of nested lists: {nestedList}.");
-            Console.WriteLine($"The number of items in the shortest nested list: {nestedList}.");
-            Console.WriteLine($"The average of items in the longest nested list: {nestedList}.");
-            Console.WriteLine($"The number of distinct even items across all lists: {nestedList}.");
-            Console.WriteLine($"The average of distinct odd items divisible by either 3 or 5 across all lists: {nestedList}.");
+            Console.WriteLine($"The number of nested lists: {nestedList.Count}.");// Output: 5
+            Console.WriteLine($"The number of items in the shortest nested list: {nestedList.Select(x => x.Count()).Min()}."); //Output 1
+            Console.WriteLine($"The average of items in the longest nested list: {nestedList.Select(x => x.Count()).Max()}."); //Output 10 of the largest list TODO 30 mins --> Help
+            Console.WriteLine($"The number of distinct even items across all lists: {nestedList.Sum(x => x.Distinct().Where(y => y%2 == 0).Count())}."); // Output 13
+            Console.WriteLine($"The average of distinct odd items divisible by either 3 or 5 across all lists: {nestedList.Select(x => x.Distinct().Where(y => y%3 ==0 || y%5 == 0).Count()).Average()}."); // Output 2.6
 
             // Operating on personList: 
-            Console.WriteLine($"The number of females in the list: {nestedList}.");
+            Console.WriteLine($"The number of females in the list: {personList.Where(x => x.Gender.Equals(Person.GenderValue.Female)).Count()}."); //Output: 3
             Console.WriteLine($"The average number of characters in first names: {nestedList}.");
             Console.WriteLine($"The full name of the youngest person: {nestedList}.");
             Console.WriteLine($"The first name of the person with the longest last name: {nestedList}.");
