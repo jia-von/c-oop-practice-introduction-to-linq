@@ -31,16 +31,18 @@ namespace LINQ_Practice_Intro
             Console.WriteLine($"The overall largest number across all lists: {nestedList.Select(x => x.Max()).Max()}.");// Output: 100
             Console.WriteLine($"The number of nested lists: {nestedList.Count}.");// Output: 5
             Console.WriteLine($"The number of items in the shortest nested list: {nestedList.Select(x => x.Count()).Min()}."); //Output 1
-            Console.WriteLine($"The average of items in the longest nested list: {nestedList.Select(x => x.Count()).Max()}."); //Output 10 of the largest list TODO 30 mins --> Help
+            Console.WriteLine($"The average of items in the longest nested list: {nestedList.OrderBy(x => x.Count()).Last().Average()}."); //Output: 20.1
             Console.WriteLine($"The number of distinct even items across all lists: {nestedList.Sum(x => x.Distinct().Where(y => y%2 == 0).Count())}."); // Output 13
             Console.WriteLine($"The average of distinct odd items divisible by either 3 or 5 across all lists: {nestedList.Select(x => x.Distinct().Where(y => y%3 ==0 || y%5 == 0).Count()).Average()}."); // Output 2.6
 
             // Operating on personList: 
             Console.WriteLine($"The number of females in the list: {personList.Where(x => x.Gender.Equals(Person.GenderValue.Female)).Count()}."); //Output: 3
-            Console.WriteLine($"The average number of characters in first names: {nestedList}.");
-            Console.WriteLine($"The full name of the youngest person: {nestedList}.");
-            Console.WriteLine($"The first name of the person with the longest last name: {nestedList}.");
-            Console.WriteLine($"The gender of the oldest person: {nestedList}.");
+            Console.WriteLine($"The average number of characters in first names: {personList.Select(x => x.FirstName.Length).Average()}."); //Output 4.6
+            Console.WriteLine($"The full name of the youngest person: {personList.OrderBy(x => x.DateOfBirth).Last().FirstName} {personList.OrderBy(x => x.DateOfBirth).Last().LastName}.");//Hermione Granger
+            ///personList.Select(x => x.DateOfBirth).Max()
+            //personList.Select(x => x.FirstName).ElementAt(1)} {personList.Select(x => x.LastName).ElementAt(1)
+            Console.WriteLine($"The first name of the person with the longest last name: {personList.OrderBy(x => x.LastName.Length).Last().FirstName}.");//Output: Barney
+            Console.WriteLine($"The gender of the oldest person: {personList.OrderBy(x => x.DateOfBirth).First().Gender}.");// Output is male.
 
 
 
@@ -129,7 +131,7 @@ namespace LINQ_Practice_Intro
             {
                 new List<int>() { 42, 12, 3, 7 },
                 new List<int>() { 12 },
-                new List<int>() { 37, 12, 8, 12, 41, 63, 17, 2, 6, 3 },
+                new List<int>() { 37, 12, 8, 12, 41, 63, 17, 2, 6, 3 }, // longest with 10 items ==> Average(Elements within list)
                 new List<int>() { 90, 100, 12, 7, 17 },
                 new List<int>() { 4 * 2, 13 / 3, 90 / 12, 60 % 17, 3 * 3 * 2 }
             };
