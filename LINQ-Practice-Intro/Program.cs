@@ -17,7 +17,7 @@ namespace LINQ_Practice_Intro
             // Operating on intList:
 
             
-            Console.WriteLine($"The sum of the numbers that are greater than or equal to 25: {intList.Where(x => x <= 25).Sum()}."); // Output: 120
+            Console.WriteLine($"The sum of the numbers that are greater than or equal to 25: {intList.Where(x => x >= 25).Sum()}."); // Output: 442
             Console.WriteLine($"The lowest number that is divisible by both 2 and 3: {intList.Where(x => x % 3 == 0 && x % 2 == 0).Min()}."); // Output: 12
             Console.WriteLine($"The average of the numbers that are single digits: {intList.Where(x => x<10).Average()}."); //Output: 3.5714285714285716
             Console.WriteLine($"The number of distinct numbers starting with 2: {intList.Distinct().Where(x => x.ToString().StartsWith("2")).Count()}"); // Output: 3
@@ -25,7 +25,9 @@ namespace LINQ_Practice_Intro
             // Operating on stringList:
             Console.WriteLine($"The number of distinct strings (trimmed and case insensitive): {stringList.ConvertAll(x => x.ToLower().Trim()).Distinct().Count()}."); //Output: 4
             Console.WriteLine($"The longest string (trimmed): {stringList.ConvertAll(x => x.ToLower().Trim().Length).Max()}."); // Output: 10
-            Console.WriteLine($"The second string when ordered in reverse alphabetical order: {stringList.ConvertAll(x => x.ToLower().Trim()).OrderByDescending(y => y).ElementAt(2)}.");// Answer is yes
+            Console.WriteLine($"The second string when ordered in reverse alphabetical order: {stringList.ConvertAll(x => x.ToLower().Trim()).OrderByDescending(y => y).ElementAt(1)}.");// Answer is yes
+
+           // nestedList.SelectMany()
 
             // Operating on nestedList: 
             Console.WriteLine($"The overall largest number across all lists: {nestedList.Select(x => x.Max()).Max()}.");// Output: 100
