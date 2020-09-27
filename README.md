@@ -1,4 +1,4 @@
-# C# Object-orientated Practice - Introduction to LINQ within Microsoft.NETCore.App
+# C# Introduction to LINQ within Microsoft.NETCore.App
 
 The goal of this practice is help me familiarize with class and object creation. Additionally, to use **LINQ** to query data.
 
